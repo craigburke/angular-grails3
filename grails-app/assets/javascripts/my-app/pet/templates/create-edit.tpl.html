@@ -1,0 +1,35 @@
+<h2>
+    <span ng-hide="ctrl.pet.id">Create Pet</span>
+    <span ng-show="ctrl.pet.id">Edit Pet</span>
+</h2>
+
+<div flash-message ></div>
+
+<form name="form" class="form-horizontal" role="form" novalidate> 
+	
+	<div field-container label="Birth Date" invalid="form.birthDate.$invalid">
+		<input name="birthDate" type="text" class='form-control' date-field ng-model="ctrl.pet.birthDate" />
+	</div>
+	
+	<div field-container label="Owner" invalid="form.owner.$invalid">
+		<select name="owner" class="form-control" ng-model="ctrl.pet.owner" ng-options="item.toText for item in ctrl.ownerList track by item.id"  ></select>
+	</div>
+	
+	<div field-container label="Type" invalid="form.type.$invalid">
+		<select name="type" class="form-control" ng-model="ctrl.pet.type" ng-options="item.toText for item in ctrl.petTypeList track by item.id"  ></select>
+	</div>
+	
+	<div field-container label="Visits" invalid="form.visits.$invalid">
+		<select name="visits" class="form-control" ng-model="ctrl.pet.visits" multiple  ng-options="item.toText for item in ctrl.visitList track by item.id"  ></select>
+	</div>
+	
+	<div field-container label="Name" invalid="form.name.$invalid">
+		<input name="name" type="text" class='form-control' ng-model="ctrl.pet.name" required  />
+	</div>
+
+    <div>
+        <button crud-button="save" item="ctrl.pet" is-disabled="form.$invalid" ></button>
+        <span ng-if="ctrl.pet.id"><button crud-button="delete" item="ctrl.pet" ></button></span>
+    </div>
+
+</form>

@@ -1,0 +1,54 @@
+<div class="clearfix">
+	<h2 class="pull-left">Visit List</h2>
+	<div class="pull-right"><button crud-button="create" ></button></div>
+</div>
+<div flash-message ></div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><i class="fa fa-filter"></i> Filter List</h3>
+  </div>
+  <div class="panel-body">
+<div class="row">
+<form class="form">
+	<div class="form-group col-md-3">
+		<label for="filter.date">Date</label>
+		<input type="text" class='form-control' date-field ng-model="ctrl.filter.date" ng-model-options="{ debounce: 300 }"  />
+    </div>
+	<div class="form-group col-md-3">
+		<label for="filter.pet">Pet</label>
+		<select class="form-control" ng-model="ctrl.filter.petId" ng-options="item.id as item.toText for item in ctrl.petList" ng-model-options="{ debounce: 300 }"  ><option value="">-- Select Pet--</option></select>
+    </div>
+	<div class="form-group col-md-3">
+		<label for="filter.description">Description</label>
+		<input type="text" class='form-control' ng-model="ctrl.filter.description" ng-model-options="{ debounce: 300 }"  />
+    </div>
+</form>
+</div>
+  </div>
+</div>
+
+<table id="list" class="table table-striped table-bordered table-hover">
+
+    <thead sort-header ng-model="ctrl.sort" on-sort="ctrl.reload()">
+        <th sortable-column title="Id" property="id"></th>
+		<th sortable-column title="Date" property="date"></th>
+		<th sortable-column title="Pet" property="pet"></th>
+		<th sortable-column title="Description" property="description"></th>
+        <th>&nbsp;</th>
+    </thead>
+    <tbody>
+        <tr class="animate-repeat" ng-repeat="item in ctrl.visitList">
+            <td><a href="#/visit/show/{{item.id}}">{{item.id}}</a></td>
+			<td>{{ item.date | date: 'MMM d, yyyy' }}</td>
+			<td>{{ item.pet.toText }}</td>
+			<td>{{ item.description }}</td>
+            <td>
+                <button crud-button="edit" item="item" ></button>
+                <button crud-button="delete" item="item" after-action="ctrl.reload()" ></button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div pagination total-items="ctrl.visitList.getTotalCount()" items-per-page="ctrl.pageSize" ng-model="ctrl.page" ng-change="ctrl.load()"></div>

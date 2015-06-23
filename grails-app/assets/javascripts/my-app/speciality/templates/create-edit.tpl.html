@@ -1,0 +1,19 @@
+<h2>
+    <span ng-hide="ctrl.speciality.id">Create Speciality</span>
+    <span ng-show="ctrl.speciality.id">Edit Speciality</span>
+</h2>
+
+<div flash-message ></div>
+
+<form name="form" class="form-horizontal" role="form" novalidate> 
+	
+	<div field-container label="Name" invalid="form.name.$invalid">
+		<input name="name" type="text" class='form-control' ng-model="ctrl.speciality.name" required  />
+	</div>
+
+    <div>
+        <button crud-button="save" item="ctrl.speciality" is-disabled="form.$invalid" ></button>
+        <span ng-if="ctrl.speciality.id"><button crud-button="delete" item="ctrl.speciality" ></button></span>
+    </div>
+
+</form>

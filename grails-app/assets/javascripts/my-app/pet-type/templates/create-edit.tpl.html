@@ -1,0 +1,19 @@
+<h2>
+    <span ng-hide="ctrl.petType.id">Create PetType</span>
+    <span ng-show="ctrl.petType.id">Edit PetType</span>
+</h2>
+
+<div flash-message ></div>
+
+<form name="form" class="form-horizontal" role="form" novalidate> 
+	
+	<div field-container label="Name" invalid="form.name.$invalid">
+		<input name="name" type="text" class='form-control' ng-model="ctrl.petType.name" required  />
+	</div>
+
+    <div>
+        <button crud-button="save" item="ctrl.petType" is-disabled="form.$invalid" ></button>
+        <span ng-if="ctrl.petType.id"><button crud-button="delete" item="ctrl.petType" ></button></span>
+    </div>
+
+</form>

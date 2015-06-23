@@ -1,0 +1,16 @@
+<h2>Show Owner</h2>
+<div flash-message ></div>
+
+<table class="table table-bordered table-striped">
+    <tr display-field label="First Name" value="ctrl.owner.firstName"></tr>
+    <tr display-field label="Last Name" value="ctrl.owner.lastName"></tr>
+    <tr display-field label="Pets" value="ctrl.owner.pets | domainClassList"></tr>
+    <tr display-field label="Address" value="ctrl.owner.address"></tr>
+    <tr display-field label="City" value="ctrl.owner.city"></tr>
+    <tr display-field label="Telephone" value="ctrl.owner.telephone"></tr>
+</table>
+
+<div class="form-actions">
+    <button crud-button="edit" item="ctrl.owner" ></button>
+    <button crud-button="delete" item="ctrl.owner" ></button>
+</div>

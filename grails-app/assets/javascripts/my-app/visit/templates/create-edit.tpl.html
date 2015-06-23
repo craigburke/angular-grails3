@@ -1,0 +1,27 @@
+<h2>
+    <span ng-hide="ctrl.visit.id">Create Visit</span>
+    <span ng-show="ctrl.visit.id">Edit Visit</span>
+</h2>
+
+<div flash-message ></div>
+
+<form name="form" class="form-horizontal" role="form" novalidate> 
+	
+	<div field-container label="Date" invalid="form.date.$invalid">
+		<input name="date" type="text" class='form-control' date-field ng-model="ctrl.visit.date" />
+	</div>
+	
+	<div field-container label="Pet" invalid="form.pet.$invalid">
+		<select name="pet" class="form-control" ng-model="ctrl.visit.pet" ng-options="item.toText for item in ctrl.petList track by item.id"  ></select>
+	</div>
+	
+	<div field-container label="Description" invalid="form.description.$invalid">
+		<input name="description" type="text" class='form-control' ng-model="ctrl.visit.description" required  />
+	</div>
+
+    <div>
+        <button crud-button="save" item="ctrl.visit" is-disabled="form.$invalid" ></button>
+        <span ng-if="ctrl.visit.id"><button crud-button="delete" item="ctrl.visit" ></button></span>
+    </div>
+
+</form>

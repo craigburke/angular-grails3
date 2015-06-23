@@ -1,0 +1,13 @@
+<h2>Show Vet</h2>
+<div flash-message ></div>
+
+<table class="table table-bordered table-striped">
+    <tr display-field label="Specialities" value="ctrl.vet.specialities | domainClassList"></tr>
+    <tr display-field label="First Name" value="ctrl.vet.firstName"></tr>
+    <tr display-field label="Last Name" value="ctrl.vet.lastName"></tr>
+</table>
+
+<div class="form-actions">
+    <button crud-button="edit" item="ctrl.vet" ></button>
+    <button crud-button="delete" item="ctrl.vet" ></button>
+</div>

@@ -1,0 +1,13 @@
+<h2>Show Visit</h2>
+<div flash-message ></div>
+
+<table class="table table-bordered table-striped">
+    <tr display-field label="Date" value="ctrl.visit.date | date: 'MMM d, yyyy'"></tr>
+    <tr display-field label="Pet" value="ctrl.visit.pet.toText"></tr>
+    <tr display-field label="Description" value="ctrl.visit.description"></tr>
+</table>
+
+<div class="form-actions">
+    <button crud-button="edit" item="ctrl.visit" ></button>
+    <button crud-button="delete" item="ctrl.visit" ></button>
+</div>

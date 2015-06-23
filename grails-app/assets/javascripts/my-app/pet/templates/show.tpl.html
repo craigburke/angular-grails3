@@ -1,0 +1,15 @@
+<h2>Show Pet</h2>
+<div flash-message ></div>
+
+<table class="table table-bordered table-striped">
+    <tr display-field label="Birth Date" value="ctrl.pet.birthDate | date: 'MMM d, yyyy'"></tr>
+    <tr display-field label="Owner" value="ctrl.pet.owner.toText"></tr>
+    <tr display-field label="Type" value="ctrl.pet.type.toText"></tr>
+    <tr display-field label="Visits" value="ctrl.pet.visits | domainClassList"></tr>
+    <tr display-field label="Name" value="ctrl.pet.name"></tr>
+</table>
+
+<div class="form-actions">
+    <button crud-button="edit" item="ctrl.pet" ></button>
+    <button crud-button="delete" item="ctrl.pet" ></button>
+</div>

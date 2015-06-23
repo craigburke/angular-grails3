@@ -1,0 +1,27 @@
+<h2>
+    <span ng-hide="ctrl.vet.id">Create Vet</span>
+    <span ng-show="ctrl.vet.id">Edit Vet</span>
+</h2>
+
+<div flash-message ></div>
+
+<form name="form" class="form-horizontal" role="form" novalidate> 
+	
+	<div field-container label="Specialities" invalid="form.specialities.$invalid">
+		<select name="specialities" class="form-control" ng-model="ctrl.vet.specialities" multiple  ng-options="item.toText for item in ctrl.specialityList track by item.id"  ></select>
+	</div>
+	
+	<div field-container label="First Name" invalid="form.firstName.$invalid">
+		<input name="firstName" type="text" class='form-control' ng-model="ctrl.vet.firstName" required  />
+	</div>
+	
+	<div field-container label="Last Name" invalid="form.lastName.$invalid">
+		<input name="lastName" type="text" class='form-control' ng-model="ctrl.vet.lastName" required  />
+	</div>
+
+    <div>
+        <button crud-button="save" item="ctrl.vet" is-disabled="form.$invalid" ></button>
+        <span ng-if="ctrl.vet.id"><button crud-button="delete" item="ctrl.vet" ></button></span>
+    </div>
+
+</form>

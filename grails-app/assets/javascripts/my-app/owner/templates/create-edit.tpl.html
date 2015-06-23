@@ -1,0 +1,39 @@
+<h2>
+    <span ng-hide="ctrl.owner.id">Create Owner</span>
+    <span ng-show="ctrl.owner.id">Edit Owner</span>
+</h2>
+
+<div flash-message ></div>
+
+<form name="form" class="form-horizontal" role="form" novalidate> 
+	
+	<div field-container label="First Name" invalid="form.firstName.$invalid">
+		<input name="firstName" type="text" class='form-control' ng-model="ctrl.owner.firstName" />
+	</div>
+	
+	<div field-container label="Last Name" invalid="form.lastName.$invalid">
+		<input name="lastName" type="text" class='form-control' ng-model="ctrl.owner.lastName" />
+	</div>
+	
+	<div field-container label="Pets" invalid="form.pets.$invalid">
+		<select name="pets" class="form-control" ng-model="ctrl.owner.pets" multiple  ng-options="item.toText for item in ctrl.petList track by item.id"  ></select>
+	</div>
+	
+	<div field-container label="Address" invalid="form.address.$invalid">
+		<input name="address" type="text" class='form-control' ng-model="ctrl.owner.address" required  />
+	</div>
+	
+	<div field-container label="City" invalid="form.city.$invalid">
+		<input name="city" type="text" class='form-control' ng-model="ctrl.owner.city" required  />
+	</div>
+	
+	<div field-container label="Telephone" invalid="form.telephone.$invalid">
+		<input name="telephone" type="text" class='form-control' ng-model="ctrl.owner.telephone" required  />
+	</div>
+
+    <div>
+        <button crud-button="save" item="ctrl.owner" is-disabled="form.$invalid" ></button>
+        <span ng-if="ctrl.owner.id"><button crud-button="delete" item="ctrl.owner" ></button></span>
+    </div>
+
+</form>

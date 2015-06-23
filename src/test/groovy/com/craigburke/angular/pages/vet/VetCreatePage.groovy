@@ -1,0 +1,19 @@
+package com.craigburke.angular.pages.vet
+
+import geb.Module
+import geb.Page
+
+class VetCreatePage extends Page {
+
+    static url = "#/vet/create"
+
+    static at = { $('h2').text() == 'Create Vet' }
+
+    static content = { 
+		specialitiesField {$("input[ng-model='ctrl.vet.specialities']")}
+		firstNameField {$("input[ng-model='ctrl.vet.firstName']")}
+		lastNameField {$("input[ng-model='ctrl.vet.lastName']")}
+        saveButton { $('button[crud-button="save"]') }
+    }
+
+}
